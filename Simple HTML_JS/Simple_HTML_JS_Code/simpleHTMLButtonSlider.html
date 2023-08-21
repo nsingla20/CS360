@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WebGL SimpleCanvas</title>
+    <script type="text/javascript" src="simpleHTMLButtonSlider.js"></script>
+  </head>
+
+  <body onload="webGLStart();">
+    <canvas id="simpleHTMLButtonSlider" width="500" height="500"></canvas>
+
+    <h4>Add a button</h4>
+    <button onclick="sampleButton(0)">Button</button>
+
+    <h4>Add a Slider</h4>
+    <div class="sliders">
+      <label for="slider">Sample Slider</label>
+      <input
+        autocomplete="off"
+        type="range"
+        min="-50"
+        max="50"
+        value="0"
+        id="sliderId"
+      />
+    </div>
+  </body>
+</html>

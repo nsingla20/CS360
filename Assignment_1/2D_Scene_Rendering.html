@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>WebGL 2D Animation</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <style>
+      html,body {
+        width : 100%;
+      }
+      #container {
+        width :fit-content;
+        margin: auto;
+      }
+      .buttons{
+        width :fit-content;
+        margin: auto;
+      }
+
+      .buttons .button{
+        margin: 0 10px;
+        display : inline-block;
+      }
+    </style>
+    <script type="text/javascript" src="glMatrix-0.9.5.min.js"></script>
+    <script type="text/javascript" src="2D_Scene_Rendering.js"></script>
+  </head>
+
+  <body onload="webGLStart();">
+    <div id="container">
+      <div id="drawing">
+        <canvas
+          id="2D_Scene_Rendering"
+        ></canvas>
+      </div>
+      <h2>Change Draw Mode :</h2>
+      <div class="buttons">
+        <div class="button"><button type="button" onclick="changeMode(1)">Point View</button></div>
+        <div class="button"><button type="button" onclick="changeMode(2)">Wireframe View</button></div>
+        <div class="button"><button type="button" onclick="changeMode(3)">Solid View</button></div>
+      </div>
+    </div>
+  </body>
+</html>
