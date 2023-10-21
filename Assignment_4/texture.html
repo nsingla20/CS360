@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>WebGL 3D Animation</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <style>
+      html,body {
+        width : 100%;
+      }
+      #container {
+        width :fit-content;
+        margin: auto;
+        background-color: rgb(206,232,223);
+        border-radius: 10px;
+        border: thin solid;
+        padding: 10px;
+      }
+      #drawing {
+        width: fit-content;
+        margin: auto;
+      }
+      #texture {
+        margin: auto;
+      }
+      #inputFiles {
+        display: inline-block;
+      }
+      .buttons{
+        width :fit-content;
+        margin: auto;
+      }
+
+      .buttons .button{
+        margin: 0 10px;
+        display : inline-block;
+      }
+
+      .column {
+        float: left;
+        width: 33.33%;
+        text-align: center
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+
+      #inputFiles input{
+        width: 50%;
+      }
+
+
+
+      input[type="range"] {
+
+        width: 15rem;
+      }
+
+    </style>
+
+  </head>
+
+  <body onload="webGLStart();">
+    <div id="container">
+
+      <div id="drawing">
+        <canvas
+          id="texture"
+        ></canvas>
+      </div>
+
+      <div id="inputFiles">
+        <h3>Input Files</h3>
+        <label for="backImg">Select Background Image :</label>
+        <input type="file" id="backImg" onchange="loadImg(this,gl.TEXTURE1);" name="backImg">
+        <br>
+        <label for="foreImg">Select Foreground Image :</label>
+        <input type="file" id="foreImg" onchange="loadImg(this,gl.TEXTURE2);" name="foreImg">
+      </div>
+
+      <div id="imgMode">
+        <h3>Image Mode</h3>
+        <input type="radio" id="imgMode1" name="imgMode" onchange="imgModeCh(1);">
+        <label for="imgMode1">Background Only</label>
+        <input type="radio" id="imgMode2" name="imgMode" onchange="imgModeCh(2);">
+        <label for="imgMode2">Alpha Blended</label><br>
+        <input type="radio" id="imgMode3" name="imgModea" onchange="imgModeaCh(3);">
+        <label for="imgMode3">Gray Scale</label>
+        <input type="radio" id="imgMode4" name="imgModea" onchange="imgModeaCh(4);">
+        <label for="imgMode4">Sepia</label>
+      </div>
+      <br>
+
+      <div>
+        <b>Contrast : <input type="range" min="-1" max="1" step="0.1" value="0" class="slider" id="ContrastSlider"></b>
+        <br>
+        <b>Brightness : <input type="range" min="0" max="2" step="0.1" value="1" class="slider" id="BrightnessSlider"></b>
+      </div>
+
+      <div id="procBack">
+        <h3>Process Background Image</h3>
+        <input type="radio" id="procBack1" name="procBack" onchange="procBack(1);">
+        <label for="procBack1">Smooth</label>
+        <input type="radio" id="procBack2" name="procBack" onchange="procBack(2);">
+        <label for="procBack2">Sharpen</label>
+        <input type="radio" id="procBack3" name="procBack" onchange="procBack(3);">
+        <label for="procBack3">Gradient</label>
+        <input type="radio" id="procBack4" name="procBack" onchange="procBack(4);">
+        <label for="procBack3">Laplacian</label>
+      </div>
+      <br>
+
+      <button onClick="window.location.reload();">Reset</button>
+      <button id="screenshot" type="button" onclick="getShot()">Save Screenshot</button>
+
+    </div>
+    <script type="text/javascript" src="texture.js"></script>
+  </body>
+</html>
