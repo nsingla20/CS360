@@ -907,8 +907,9 @@ function makeScene(){
   makeTable();
 
   pushMatrix(matrixStack,mMatrix);
+  mMatrix = mat4.translate(mMatrix, [0, -1, 0]);
   mMatrix = mat4.scale(mMatrix, [0.5, 0.5, 0.5]);
-  mMatrix = mat4.translate(mMatrix, [3, -1, 4]);
+  mMatrix = mat4.translate(mMatrix, [3, .65, 4]);
   mMatrix = mat4.rotate(mMatrix, degToRad(30), [0, 1, 0]);
   makeRubik();
   mMatrix = popMatrix(matrixStack);
@@ -994,20 +995,14 @@ function drawScene() {
 
 
 function onMouseDown(event) {
-  document.addEventListener("mousemove", onMouseMove, false);
-  document.addEventListener("mouseup", onMouseUp, false);
-  document.addEventListener("mouseout", onMouseOut, false);
+  canvas.addEventListener("mousemove", onMouseMove, false);
+  canvas.addEventListener("mouseup", onMouseUp, false);
+  canvas.addEventListener("mouseout", onMouseOut, false);
 
-  if (
-    event.layerX <= canvas.width &&
-    event.layerX >= 0 &&
-    event.layerY <= canvas.height &&
-    event.layerY >= 0
-  ) {
-    prevMouseX = event.clientX;
-    prevMouseY = canvas.height - event.clientY;
-    eyeDegStep = 0;
-  }
+  prevMouseX = event.clientX;
+  prevMouseY = canvas.height - event.clientY;
+  eyeDegStep = 0;
+
 }
 
 function moveCam(angleeX, angleeY, dist) {
@@ -1036,12 +1031,7 @@ function moveCam(angleeX, angleeY, dist) {
 
 function onMouseMove(event) {
   // make mouse interaction only within canvas
-  if (
-    event.layerX <= canvas.width &&
-    event.layerX >= 0 &&
-    event.layerY <= canvas.height &&
-    event.layerY >= 0
-  ) {
+
     var mouseX = event.clientX;
     var diffX = mouseX - prevMouseX;
     prevMouseX = mouseX;
@@ -1052,24 +1042,24 @@ function onMouseMove(event) {
 
     moveCam(-diffX, diffY, dist_o);
     drawScene();
-  }
+
 }
 
 function onMouseUp(event) {
-  document.removeEventListener("mousemove", onMouseMove, false);
-  document.removeEventListener("mouseup", onMouseUp, false);
-  document.removeEventListener("mouseout", onMouseOut, false);
+  canvas.removeEventListener("mousemove", onMouseMove, false);
+  canvas.removeEventListener("mouseup", onMouseUp, false);
+  canvas.removeEventListener("mouseout", onMouseOut, false);
 }
 
 function onMouseOut(event) {
-  document.removeEventListener("mousemove", onMouseMove, false);
-  document.removeEventListener("mouseup", onMouseUp, false);
-  document.removeEventListener("mouseout", onMouseOut, false);
+  canvas.removeEventListener("mousemove", onMouseMove, false);
+  canvas.removeEventListener("mouseup", onMouseUp, false);
+  canvas.removeEventListener("mouseout", onMouseOut, false);
 }
 
 function webGLStart() {
   canvas = document.getElementById("texture");
-  document.addEventListener("mousedown", onMouseDown, false);
+  canvas.addEventListener("mousedown", onMouseDown, false);
 
   // initialize WebGL
   initGL(canvas);
