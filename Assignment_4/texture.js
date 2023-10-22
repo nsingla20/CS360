@@ -387,14 +387,18 @@ function getShot(){
   // Trigger a click event to download the image
   a.click();
 }
-const saveBlob = (function() {
-  const a = document.createElement('a');
-  document.body.appendChild(a);
-  a.style.display = 'none';
-  return function saveData(blob, fileName) {
-     const url = window.URL.createObjectURL(blob);
-     a.href = url;
-     a.download = fileName;
-     a.click();
-  };
-}());
+
+function reset(){
+  var ele = document.getElementsByName("imgMode");
+  for(var i=0;i<ele.length;i++)
+      ele[i].checked = false;
+  ele = document.getElementsByName("imgModea");
+  for(var i=0;i<ele.length;i++)
+      ele[i].checked = false;
+  ele = document.getElementsByName("procBack");
+  for(var i=0;i<ele.length;i++)
+      ele[i].checked = false;
+  procBack(0);
+  imgModeCh(0);
+  imgModeaCh(0);
+}
