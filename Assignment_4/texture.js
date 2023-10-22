@@ -98,8 +98,9 @@ void main() {
   }
 
 
-
-  if (imgMode==2){
+  if (imgMode==0){
+    col = vec4(vec3(0.0),1.0);
+  } else if (imgMode==2){
     vec4 fore = get_tex(foreground,tex);
     col = col*(1.0-fore.a) + fore*fore.a;
   }
@@ -345,6 +346,9 @@ function procBack(val) {
     case 4:
       gl.uniformMatrix3fv(uKernelLocation, false, lapMat);
       break;
+    default:
+      gl.uniformMatrix3fv(uKernelLocation, false, def);
+      break;
   }
 }
 
@@ -365,13 +369,13 @@ function webGLStart() {
   drawScene();
 }
 
-var slider = document.getElementById("ContrastSlider");
-slider.oninput = function() {
+var Cslider = document.getElementById("ContrastSlider");
+Cslider.oninput = function() {
   contrast = this.value;
   gl.uniform1f(uContrastLocation, contrast);
 }
-var slider = document.getElementById("BrightnessSlider");
-slider.oninput = function() {
+var Bslider = document.getElementById("BrightnessSlider");
+Bslider.oninput = function() {
   brightness = this.value;
   gl.uniform1f(uBrightnessLocation, brightness);
 }
@@ -401,4 +405,10 @@ function reset(){
   procBack(0);
   imgModeCh(0);
   imgModeaCh(0);
+  Cslider.value = 0;
+  contrast = 0;
+  Bslider.value = 1;
+  brightness = 1;
+  gl.uniform1f(uContrastLocation, contrast);
+  gl.uniform1f(uBrightnessLocation, brightness);
 }
