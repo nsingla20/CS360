@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>WebGL 3D Animation</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <style>
+      html,body {
+        width : 100%;
+      }
+      #container {
+        width :fit-content;
+        margin: auto;
+        background-color: rgb(206,232,223);
+        border-radius: 10px;
+        border: thin solid;
+        padding: 10px;
+      }
+      #drawing {
+        width: fit-content;
+        margin: auto;
+      }
+      .buttons{
+        width :fit-content;
+        margin: auto;
+      }
+
+      .buttons .button{
+        margin: 0 10px;
+        display : inline-block;
+      }
+
+      input[type="range"] {
+        width: 15rem;
+      }
+
+    </style>
+
+  </head>
+
+  <body onload="webGLStart();">
+    <div id="container">
+
+      <div id="drawing">
+        <canvas
+          id="3D_shape_generation"
+        ></canvas>
+      </div>
+      <div id="imgMode">
+        <h3>Shade Mode :</h3>
+        <button type="button" onclick="set_mode(1)">Phong</button>
+        <button type="button" onclick="set_mode(2)">Phong+Shadow</button>
+        <button type="button" onclick="set_mode(3)">Phong+Reflection</button>
+        <button type="button" onclick="set_mode(4)">Phong+Shadow+Reflection</button>
+      </div>
+      <br>
+
+      <div>
+        <b>Move Light : <input type="range" min="-16" max="16" step="0.1" value="0" class="slider" id="LightPosSlider"></b>
+        <br>
+        <b>Bounce Limit : <input type="range" min="1" max="6" step="1" value="1" class="slider" id="BounceLimit"></b>
+      </div>
+
+    </div>
+    <script type="text/javascript" src="3D_shape_generation.js"></script>
+  </body>
+</html>
