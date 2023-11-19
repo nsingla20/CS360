@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Assignment 5</title>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-1" />
+    <style>
+        #box {
+            border: 3px dashed;
+            width: fit-content;
+            margin: 0 auto;
+            padding: 10px;
+            background-color: #bbe3d5;
+            border-radius: 15px;
+        }
+
+        input[type="range"] {
+            width: 20rem;
+        }
+      </style>
+
+  </head>
+
+  <body onload="webGLStart();">
+    <div id="box">
+        <div id="drawing">
+            <canvas
+            id="assignment5"
+            style="border: none"
+            width="500"
+            height="500"
+          ></canvas>
+        </div>
+        <h3>Shade Mode :</h3>
+        <button type="button" onclick="phong()">Phong</button>
+        <button type="button" onclick="phShd()">Phong+Shadow</button>
+        <button type="button" onclick="phRef()">Phong+Reflection</button>
+        <button type="button" onclick="ssall()">Phong+Shadow+Reflection</button>
+
+        <!-- <div id="takeInput">
+          <h3>Input Files</h3>
+          <label for="backgroundImage">Select Background Image:</label>
+          <input type="file" id="backgroundImage" name="backgroundImage"><br>
+          <label for="foregroundImage">Select Foreground Image:</label>
+          <input type="file" id="foregroundImage" name="foregroundImage"><br>
+        </div>
+
+        <div id="changeImageMode">
+          <h3>Image Mode</h3>
+          <input type="radio" id="backgroundOnly" name="backgroundOrBlend">
+          <label for="backgroundOnly">Background Only</label>
+          <input type="radio" id="blend" name="backgroundOrBlend">
+          <label for="blend">Alpha Blended</label><br>
+          <input type="radio" id="gray" name="grayOrSepia">
+          <label for="gray">Gray Scale</label>
+          <input type="radio" id="sepia" name="grayOrSepia">
+          <label for="sepia">Sepia</label>
+        </div>
+
+        <div>
+          <h3>Adjust Image:</h3>
+          <label for="ContrastSlider">Contrast:</label>
+          <input type="range" id="ContrastSlider" min="-1" max="1" step="0.1" value="0">
+          <br>
+          <label for="BrightnessSlider">Brightness:</label>
+          <input type="range" id="BrightnessSlider" min="0" max="2" step="0.1" value="1">
+        </div>
+
+        <div id="processBackground">
+          <h3>Process Background Image</h3>
+          <input type="radio" id="smooth" name="processBackground">
+          <label for="smooth">Smooth</label>
+          <input type="radio" id="sharp" name="processBackground">
+          <label for="sharp">Sharpen</label>
+          <input type="radio" id="gradient" name="processBackground">
+          <label for="gradient">Gradient</label>
+          <input type="radio" id="laplacian" name="processBackground">
+          <label for="laplacian">Laplacian</label>
+        </div>
+        <br> -->
+
+        <div>
+            <b>Move Light : <input type="range" min="-16" max="16" step="0.1" value="0" id="lightpos"></b>
+            <br>
+            <b>Bounce Limit : <input type="range" min="1" max="6" step="1" value="1" id="bounce"></b>
+          </div>
+      </div>
+      <script type="text/javascript" src="assignment5.js"></script>
+    </body>
+</html
